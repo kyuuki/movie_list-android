@@ -10,7 +10,6 @@ class MainViewModel : ViewModel() {
         MutableLiveData<List<MovieData>>(ArrayList())
     }
 
-    // TODO: 初期化処理 (コンストラクタ) でこれをやりたい
     fun loadMoiveData() {
         var list = arrayListOf<MovieData>()
 

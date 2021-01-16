@@ -16,13 +16,8 @@ import jp.kyuuki.movie_list.ui.main.MainFragment
  */
 class MovieAdapter(
     val listener: OnItemClickListener,
-    mList: List<MovieData>,
-    mainFragment: MainFragment
-
+    private val movieList: List<MovieData>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    var movieList: List<MovieData> = mList
-    var mContext: MainFragment = mainFragment
 
     override fun onCreateViewHolder(parent: ViewGroup, i: Int): ViewHolder {
         val v: View =
@@ -35,9 +30,9 @@ class MovieAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val itemAdapter: MovieData = movieList.get(position)
-        (holder as ViewHolder).movieTitle.setText(itemAdapter.title)
-        (holder as ViewHolder).movieYear.setText(itemAdapter.year)
+        val itemAdapter: MovieData = movieList[position]
+        (holder as ViewHolder).movieTitle.text = itemAdapter.title
+        (holder as ViewHolder).movieYear.text = itemAdapter.year
         (holder as ViewHolder).movieImage.setImageResource(itemAdapter.mainImage)
         (holder as ViewHolder).netflixImage.setImageResource(itemAdapter.netflixImage)
     }
@@ -60,19 +55,17 @@ class MovieAdapter(
 
             // Setting item click listener
             itemView.setOnClickListener(this)
-
         }
 
         override fun onClick(v: View?) {
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
-                listener.OnItemClick(position)
+                listener.onItemClick(position)
             }
-
         }
     }
 
     interface OnItemClickListener {
-        fun OnItemClick(position: Int)
+        fun onItemClick(position: Int)
     }
 }
