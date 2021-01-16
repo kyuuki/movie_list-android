@@ -12,8 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import jp.kyuuki.movie_list.MovieAdapter
-import jp.kyuuki.movie_list.MovieData
+import jp.kyuuki.movie_list.model.Video
 import jp.kyuuki.movie_list.R
 
 class MainFragment : Fragment(), MovieAdapter.OnItemClickListener {
@@ -40,7 +39,7 @@ class MainFragment : Fragment(), MovieAdapter.OnItemClickListener {
     }
 
     private fun adapter(
-        mList: List<MovieData>,
+        mList: List<Video>,
         listener: MainFragment
     ) {
         val mMessageAdapter = MovieAdapter(listener, mList)

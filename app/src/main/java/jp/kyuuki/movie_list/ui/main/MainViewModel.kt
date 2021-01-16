@@ -2,24 +2,24 @@ package jp.kyuuki.movie_list.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import jp.kyuuki.movie_list.MovieData
+import jp.kyuuki.movie_list.model.Video
 import jp.kyuuki.movie_list.R
 
 class MainViewModel : ViewModel() {
-    val movies: MutableLiveData<List<MovieData>> by lazy {
-        MutableLiveData<List<MovieData>>(ArrayList())
+    val movies: MutableLiveData<List<Video>> by lazy {
+        MutableLiveData<List<Video>>(ArrayList())
     }
 
     fun loadMoiveData() {
-        var list = arrayListOf<MovieData>()
+        var list = arrayListOf<Video>()
 
-        var movie: MovieData
+        var movie: Video
 
         for (i in 0..10) {
-            movie = MovieData(
-                R.drawable.anime,
+            movie = Video(
                 "One Piece($i)",
-                "2030年",
+                2000 + i,
+                R.drawable.anime,
                 R.drawable.netfliximage,
                 "http://www.netflix.com/watch/70153404"
             )

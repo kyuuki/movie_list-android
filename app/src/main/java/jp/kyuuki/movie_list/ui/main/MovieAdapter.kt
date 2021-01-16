@@ -1,14 +1,13 @@
-package jp.kyuuki.movie_list
+package jp.kyuuki.movie_list.ui.main
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import jp.kyuuki.movie_list.ui.main.MainFragment
+import jp.kyuuki.movie_list.R
+import jp.kyuuki.movie_list.model.Video
 
 
 /**
@@ -16,7 +15,7 @@ import jp.kyuuki.movie_list.ui.main.MainFragment
  */
 class MovieAdapter(
     val listener: OnItemClickListener,
-    private val movieList: List<MovieData>
+    private val movieList: List<Video>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, i: Int): ViewHolder {
@@ -30,9 +29,9 @@ class MovieAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val itemAdapter: MovieData = movieList[position]
+        val itemAdapter: Video = movieList[position]
         (holder as ViewHolder).movieTitle.text = itemAdapter.title
-        (holder as ViewHolder).movieYear.text = itemAdapter.year
+        (holder as ViewHolder).movieYear.text = "${itemAdapter.year}年"
         (holder as ViewHolder).movieImage.setImageResource(itemAdapter.mainImage)
         (holder as ViewHolder).netflixImage.setImageResource(itemAdapter.netflixImage)
     }
@@ -42,10 +41,10 @@ class MovieAdapter(
      */
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        var movieTitle: TextView
-        var movieImage: ImageView
-        var movieYear: TextView
-        var netflixImage: ImageView
+        val movieTitle: TextView
+        val movieYear: TextView
+        val movieImage: ImageView
+        val netflixImage: ImageView
 
         init {
             movieTitle = itemView.findViewById<View>(R.id.txtMovieTitle) as TextView
