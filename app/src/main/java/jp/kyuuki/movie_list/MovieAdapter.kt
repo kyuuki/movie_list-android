@@ -16,7 +16,7 @@ import jp.kyuuki.movie_list.ui.main.MainFragment
  */
 class MovieAdapter(
     val listener: OnItemClickListener,
-    mList: ArrayList<MovieData>,
+    mList: List<MovieData>,
     mainFragment: MainFragment
 
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
